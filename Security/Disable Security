@@ -1,0 +1,24 @@
+
+Disabling Security:
+--------------------
+One may accidentally set up a security realm / authorization in such a way that you may no longer be able to reconfigure Jenkins.
+
+When this happens, you can fix this by the following steps:
+
+Stop Jenkins (the easiest way to do this is to stop the servlet container.)
+
+Go to $JENKINS_HOME in the file system and find config.xml file.
+
+Open this file in the editor.
+
+Look for the <useSecurity>true</useSecurity> element in this file.
+
+Replace true with false
+
+Remove the elements authorizationStrategy and securityRealm
+
+Start Jenkins
+
+When Jenkins comes back, it will be in an unsecured mode where everyone gets full access to the system.
+
+If this is still not working, trying renaming or deleting config.xml.
