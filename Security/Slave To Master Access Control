@@ -1,0 +1,27 @@
+
+Whitelisting from GUI:
+----------------------
+
+On Jenkins, you can go to http://jenkins/administrativeMonitor/slaveToMasterAccessControl/ to edit whitelist rules from GUI 
+and have them reflected right away in the running instance. It consists of the following three sections:
+
+>>Currently whitelisted commands: See above for what this field means.
+>>Currently rejected commands: This section lists unclassified commands that Jenkins has actually rejected. You can check boxes and
+submit them to have Jenkins write them into the "currently whitelisted commands" section. Be careful when you do this, though.
+>>File Access Fileds:File access request from agents is tested against the rules you specify. Each rule is a tuple that consists of:
+
+allow/deny: if the following two parameters match the current request being considered, an "allow" entry would allow the request to be carried out and a "deny" entry would deny the request to be rejected, regardless of what later rules might say.
+operation: the type of the operation requested. The following 6 values exist. You can also list them separating with ',' or use "all" to indicate a match to all operations:
+read: read file content or list directory entries
+write: write file content
+mkdirs: create a new directory
+create: create a file in an existing directory
+delete: delete a file or directory
+stat: read metadata of a file/directory, such as timestamp, length, file access modes.
+file path: regular expression that specifies file paths that matches this rule. In addition to the base regexp syntax, it supports the following tokens:
+<JENKINS_HOME> can be used as a prefix to match your $JENKINS_HOME directory
+<BUILDDIR> can be used as a prefix to match your build record directory, such as /var/lib/jenkins/job/foo/builds/2014-10-17_12-34-56
+<BUILDID> matches the timestamp-formatted build IDs, like 2014-10-17_12-34-56.
+
+When submitted, these changes are written back to disk and then re-read right away into Jenkins, including all 
+whitelisted-callables.d/.conf and filepath-filters.d/.conf.
