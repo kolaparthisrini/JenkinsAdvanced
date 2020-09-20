@@ -2,3 +2,7 @@
 https://wiki.jenkins.io/display/JENKINS/Build+Monitor+Plugin
 https://wiki.jenkins.io/display/JENKINS/Role+Strategy+Plugin
 https://wiki.jenkins.io/display/JENKINS/Standard+Security+Setup
+>>Scriptler allows you to store/edit groovy scripts and execute it on any of the slaves/nodes… no need to copy/paste groovy code anymore.
+Note: The current version of this plugin may not be safe to use. Please review the warnings before use.
+More Info – https://wiki.jenkins.io/display/JENKINS/Scriptler+Plugin
+>>
